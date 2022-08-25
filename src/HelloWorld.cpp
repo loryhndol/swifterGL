@@ -13,7 +13,7 @@ void HelloWorld::color_change_with_time(double current_time) {
 	glClearBufferfv(GL_COLOR, 0, color);
 }
 
-void HelloWorld::draw_a_point(loryhndol::VAOGuard& vao_guard) {
+void HelloWorld::draw_a_point(swifterGL::VAOGuard& vao_guard) {
 	glUseProgram(vao_guard.get_program());
 
 	glPointSize(40.0f);
@@ -21,7 +21,7 @@ void HelloWorld::draw_a_point(loryhndol::VAOGuard& vao_guard) {
 	glDrawArrays(GL_POINTS, 0, 1);
 }
 
-void HelloWorld::render(double current_time, loryhndol::VAOGuard& vao_guard) {
+void HelloWorld::render(double current_time, swifterGL::VAOGuard& vao_guard) {
 	color_change_with_time(current_time);
 
 	draw_a_point(vao_guard);

@@ -1,13 +1,13 @@
 #pragma once
-#include "../my-opengl-framework/framework.h"
+#include "../framework/framework.h"
 #include <cmath>
 
-class HelloWorld : public loryhndol::Application {
+class HelloWorld : public swifterGL::Application {
 public:
 	HelloWorld();
 	~HelloWorld();
 
-	void render(double current_time, loryhndol::VAOGuard& vao_guard) override;
+	void render(double current_time, swifterGL::VAOGuard& vao_guard) override;
 	void set_callbacks() override;
 
 private:
@@ -18,6 +18,6 @@ private:
 	static void on_mouse_wheel(GLFWwindow* window, double x_offset, double y_offset);
 
 	void color_change_with_time(double current_time);
-	void draw_a_point(loryhndol::VAOGuard& vao_guard);
+	void draw_a_point(swifterGL::VAOGuard& vao_guard);
 
 };
