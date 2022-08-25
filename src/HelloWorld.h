@@ -1,12 +1,13 @@
 #pragma once
 #include "../my-opengl-framework/framework.h"
+#include <cmath>
 
 class HelloWorld : public loryhndol::Application {
 public:
 	HelloWorld();
 	~HelloWorld();
 
-	void render(double current_time) override;
+	void render(double current_time, loryhndol::VAOGuard& vao_guard) override;
 	void set_callbacks() override;
 
 private:
@@ -15,4 +16,8 @@ private:
 	static void on_mouse_button(GLFWwindow* window, int button, int action, int modes);
 	static void on_mouse_move(GLFWwindow* window, double x, double y);
 	static void on_mouse_wheel(GLFWwindow* window, double x_offset, double y_offset);
+
+	void color_change_with_time(double current_time);
+	void draw_a_point(loryhndol::VAOGuard& vao_guard);
+
 };
