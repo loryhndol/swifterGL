@@ -8,7 +8,7 @@ src 里面是一些 Demo 示例
 
 utils 是工具目录
 
-my-opengl-framework 是框架代码
+framework 是框架代码
 
 #### 环境
 
