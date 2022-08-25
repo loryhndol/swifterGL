@@ -71,14 +71,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\opengl-framework\utils\Include;$(IncludePath)</IncludePath>
+    <IncludePath>..\utils\Include;$(IncludePath)</IncludePath>
     <ReferencePath>$(ReferencePath)</ReferencePath>
-    <LibraryPath>D:\opengl-framework\utils\Libs;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\utils\Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>D:\opengl-framework\utils\Include;$(IncludePath)</IncludePath>
+    <IncludePath>..\utils\Include;$(IncludePath)</IncludePath>
     <ReferencePath>$(ReferencePath)</ReferencePath>
-    <LibraryPath>D:\opengl-framework\utils\Libs;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\utils\Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
