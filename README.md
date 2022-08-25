@@ -1,8 +1,8 @@
-## 自用的 OpenGL 框架
+## 一个简单的使用C++11的 OpenGL 框架
 
 长久以来，苦于重复且低效率地写 OpenGL 代码，决心参考 superbible7 等经典资料做一个适合自己的框架，以提高工作效率。
 
-## 文件结构
+#### 文件结构
 
 src 里面是一些 Demo 示例
 
@@ -10,7 +10,7 @@ utils 是工具目录
 
 my-opengl-framework 是框架代码
 
-## 环境
+#### 环境
 
 - Windows 10
 
@@ -18,16 +18,16 @@ my-opengl-framework 是框架代码
 
 - OpenGL 4.5.0 core
 
-## 包含
-
-- glm
-
-- GLFW + GLAD
-
-- 使用 C++ 11 的 OpenGL 框架
-
 #### 参考
 
 - OpenGL superbible 第七版书籍和 Github源码
 
 - learnOpenGL-cn 网站
+
+#### Acknowledgement
+
+- glm
+
+- GLFW
+
+- GLAD
