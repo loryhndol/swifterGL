@@ -77,27 +77,8 @@ namespace swifterGL {
 		glfwTerminate();
 	};
 
-	GLuint compile_shaders(const std::string& vs_pathname, const std::string& fs_pathname) {
+	GLuint compile_shaders(const std::string& fs_pathname, const std::string& vs_pathname) {
 		// 文件 IO
-		std::string vertex_shader_input;
-		std::ifstream vs_stream{ vs_pathname };
-		vs_stream.exceptions(std::ifstream::failbit | std::ifstream::badbit);
-
-		try
-		{
-			while (!vs_stream.eof()) {
-				std::string s;
-				std::getline(vs_stream, s);
-				vertex_shader_input.append(s);
-			}
-		}
-		catch (std::ifstream::failure e) {
-			fprintf(stderr, "Reading Vertex Shader file failed!\n");
-			exit(1);
-		}
-
-		const char* vertex_shader_source = vertex_shader_input.c_str();
-
 		std::string fragment_shader_input;
 		std::ifstream fs_stream{ fs_pathname };
 		fs_stream.exceptions(std::ifstream::failbit | std::ifstream::badbit);
@@ -106,7 +87,7 @@ namespace swifterGL {
 			while (!fs_stream.eof()) {
 				std::string s;
 				std::getline(fs_stream, s);
-				fragment_shader_input.append(s);
+				fragment_shader_input.append(s + "\n");
 			}
 		}
 		catch (std::ifstream::failure e)
@@ -116,6 +97,25 @@ namespace swifterGL {
 		}
 
 		const char* fragment_shader_source = fragment_shader_input.c_str();
+
+		std::string vertex_shader_input;
+		std::ifstream vs_stream{ vs_pathname };
+		vs_stream.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+
+		try
+		{
+			while (!vs_stream.eof()) {
+				std::string s;
+				std::getline(vs_stream, s);
+				vertex_shader_input.append(s + "\n");
+			}
+		}
+		catch (std::ifstream::failure e) {
+			fprintf(stderr, "Reading Vertex Shader file failed!\n");
+			exit(1);
+		}
+
+		const char* vertex_shader_source = vertex_shader_input.c_str();
 
 		// 创建并编译着色器，创建程序来链接不同的着色器
 		GLuint vertex_shader = glCreateShader(GL_VERTEX_SHADER);
@@ -137,8 +137,8 @@ namespace swifterGL {
 		return program;
 	};
 
-	VAOGuard::VAOGuard(const std::string& vs_path, const std::string& fs_path)
-		:rendering_program(compile_shaders(vs_path, fs_path))
+	VAOGuard::VAOGuard(const std::string& fs_path, const std::string& vs_path)
+		:rendering_program(compile_shaders(fs_path, vs_path))
 	{
 		glCreateVertexArrays(1, &VAO);
 		glBindVertexArray(VAO);

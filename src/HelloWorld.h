@@ -18,6 +18,11 @@ private:
 	static void on_mouse_wheel(GLFWwindow* window, double x_offset, double y_offset);
 
 	void color_change_with_time(double current_time);
-	void draw_a_point(swifterGL::VAOGuard& vao_guard);
+
+	// 顶点着色器：HelloWorldPoint.vert
+	void draw_a_point(swifterGL::VAOGuard& vao_guard); 
+
+	// 顶点着色器：HelloWorldTriangle.vert
+	void draw_a_triangle(swifterGL::VAOGuard& vao_guard); 
 
 };

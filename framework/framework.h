@@ -17,7 +17,7 @@ namespace swifterGL {
 
 	class VAOGuard {
 	public:
-		VAOGuard(const std::string& vs_path, const std::string& fs_path);
+		VAOGuard(const std::string& fs_path, const std::string& vs_path);
 		~VAOGuard();
 
 		VAOGuard(const VAOGuard&) = delete;

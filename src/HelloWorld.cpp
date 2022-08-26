@@ -14,6 +14,7 @@ void HelloWorld::color_change_with_time(double current_time) {
 }
 
 void HelloWorld::draw_a_point(swifterGL::VAOGuard& vao_guard) {
+
 	glUseProgram(vao_guard.get_program());
 
 	glPointSize(40.0f);
@@ -21,10 +22,18 @@ void HelloWorld::draw_a_point(swifterGL::VAOGuard& vao_guard) {
 	glDrawArrays(GL_POINTS, 0, 1);
 }
 
+void HelloWorld::draw_a_triangle(swifterGL::VAOGuard& vao_guard) {
+
+	glUseProgram(vao_guard.get_program());
+
+	glDrawArrays(GL_TRIANGLES, 0, 3);
+}
+
 void HelloWorld::render(double current_time, swifterGL::VAOGuard& vao_guard) {
 	color_change_with_time(current_time);
 
-	draw_a_point(vao_guard);
+	//draw_a_point(vao_guard);
+	draw_a_triangle(vao_guard);
 
 }
 
