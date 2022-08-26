@@ -13,27 +13,35 @@ void HelloWorld::color_change_with_time(double current_time) {
 	glClearBufferfv(GL_COLOR, 0, color);
 }
 
-void HelloWorld::draw_a_point(swifterGL::VAOGuard& vao_guard) {
-
-	glUseProgram(vao_guard.get_program());
-
+void HelloWorld::draw_a_point() {
 	glPointSize(40.0f);
-
 	glDrawArrays(GL_POINTS, 0, 1);
 }
 
-void HelloWorld::draw_a_triangle(swifterGL::VAOGuard& vao_guard) {
+void HelloWorld::draw_a_triangle(double current_time) {
+	GLfloat attrib_pos_offset[] = {
+	(float)sin(current_time) * 0.5f,
+	(float)cos(current_time) * 0.6f,
+	0.0f,0.0f };
 
-	glUseProgram(vao_guard.get_program());
+	glVertexAttrib4fv(0, attrib_pos_offset);
+
+	GLfloat attrib_color[] = {
+		(float)cos(current_time * 0.5) * 0.5f,
+		0.0,
+		(float)sin(current_time) * 0.5f, 1.0 };
+
+	glVertexAttrib4fv(1, attrib_color);
 
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 }
 
 void HelloWorld::render(double current_time, swifterGL::VAOGuard& vao_guard) {
 	color_change_with_time(current_time);
+	glUseProgram(vao_guard.get_program());
 
-	//draw_a_point(vao_guard);
-	draw_a_triangle(vao_guard);
+	//draw_a_point();
+	draw_a_triangle(current_time);
 
 }
 

@@ -19,10 +19,10 @@ private:
 
 	void color_change_with_time(double current_time);
 
-	// 顶点着色器：HelloWorldPoint.vert
-	void draw_a_point(swifterGL::VAOGuard& vao_guard); 
+	/* 顶点着色器：HelloWorldPoint.vert，片段着色器：HelloWorldPoint.frag */
+	void draw_a_point(); 
 
-	// 顶点着色器：HelloWorldTriangle.vert
-	void draw_a_triangle(swifterGL::VAOGuard& vao_guard); 
+	/* 顶点着色器：HelloWorldTriangle.vert，片段着色器：HelloWorldTriangle.frag */
+	void draw_a_triangle(double current_time);
 
 };
