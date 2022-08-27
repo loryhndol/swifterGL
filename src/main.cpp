@@ -1,13 +1,17 @@
 #include "HelloWorld.h" // Your project
 
 int main(int argc, char* argv[]) {
-	if (argc != 3) {
-		fprintf(stderr, "Usage: %s [Fragment Shader Path] [Vertex Shader Path]\n", argv[0]);
+	if (argc < 3) {
+		fprintf(stderr, "Usage: %s [FragS] [VertS] [option: TCS] [option: TES] [option:GS]\n", argv[0]);
 		exit(1);
 	}
 
-	//swifterGL::HelloWorld app{ "Hello, OpenGL" };
-	swifterGL::HelloWorld app{};
-	app.run(argv[1], argv[2]);
+	std::vector<std::string> shader_path{ argv[1], argv[2] };
+	for (int i = 3; i < argc; i++) {
+		shader_path.push_back(argv[i]);
+	}
+
+	swifterGL::HelloWorld app{ "Hello, World" };
+	app.run(shader_path);
 	return 0;
 }

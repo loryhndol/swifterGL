@@ -31,17 +31,20 @@ namespace swifterGL {
 		glVertexAttrib4fv(0, attrib_pos_offset);
 
 		GLfloat attrib_color[] = {
-			(float)cos(current_time * 0.5) * 0.5f,
-			0.0,
-			(float)sin(current_time) * 0.5f, 1.0 };
+		(float)cos(current_time) * 0.5f,
+		1.0f,
+		0.0f,0.0f };
 
 		glVertexAttrib4fv(1, attrib_color);
 
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		//glDrawArrays(GL_TRIANGLES, 0, 3);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+		glPointSize(5.0f);
+		glDrawArrays(GL_PATCHES, 0, 3);
 	}
 
 	void HelloWorld::render(double current_time) {
-
 		color_change_with_time(current_time);
 		//draw_a_point();
 		draw_a_triangle(current_time);

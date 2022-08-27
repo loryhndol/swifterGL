@@ -1,5 +1,5 @@
 #pragma once
-#include "../framework/framework.h"
+#include "../framework/Application.h"
 #include <cmath>
 
 namespace swifterGL {
@@ -21,10 +21,7 @@ namespace swifterGL {
 
 		void color_change_with_time(double current_time);
 
-		/* 顶点着色器：HelloWorldPointVS.glsl，片段着色器：HelloWorldPointFS.glsl */
 		void draw_a_point();
-
-		/* 顶点着色器：HelloWorldTriangleVS.glsl，片段着色器：HelloWorldTriangleFS.glsl */
 		void draw_a_triangle(double current_time);
 
 	};

@@ -6,14 +6,13 @@
 #include <cstdlib>
 #include <string>
 #include <fstream>
+#include <vector>
+#include "Shader.h"
 
 namespace swifterGL {
-
-	GLuint compile_shaders(const std::string& vs_pathname, const std::string& fs_pathname);
-
 	class VAOGuard {
 	public:
-		explicit VAOGuard(const std::string& fs_path, const std::string& vs_path);
+		explicit VAOGuard(const std::vector<std::string>& shader_path);
 		~VAOGuard();
 
 		VAOGuard(const VAOGuard&) = delete;

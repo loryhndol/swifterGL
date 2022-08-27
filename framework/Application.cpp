@@ -1,4 +1,4 @@
-#include "framework.h"
+#include "Application.h"
 
 namespace swifterGL {
 	Application::Application()
@@ -10,7 +10,7 @@ namespace swifterGL {
 		window(nullptr)
 	{}
 
-	void Application::run(const char* fs_path, const char* vs_path) {
+	void Application::run(std::vector<std::string>& shader_path) {
 		bool running = true;
 
 		if (!glfwInit()) {
@@ -46,9 +46,10 @@ namespace swifterGL {
 		fprintf(stderr, "RENDERER: %s\n", (char*)glGetString(GL_RENDERER));
 #endif 
 
-		VAOGuard vao_guard(fs_path, vs_path);
+		VAOGuard vao_guard(shader_path);
 
 		while (running) {
+
 
 			render(glfwGetTime());
 

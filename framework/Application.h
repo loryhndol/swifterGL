@@ -8,6 +8,7 @@
 #include <string>
 #include <fstream>
 #include <iostream>
+#include <vector>
 
 #include "VAOGuard.h"
 
@@ -26,7 +27,7 @@ namespace swifterGL {
 		virtual void set_callbacks() = 0;
 		virtual void render(double current_time) = 0;
 
-		void run(const char* fs_path, const char* vs_path);
+		void run(std::vector<std::string>& shader_path);
 		GLFWwindow* get_window() { return window; }
 
 	protected:
