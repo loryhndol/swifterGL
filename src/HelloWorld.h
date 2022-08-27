@@ -21,10 +21,10 @@ namespace swifterGL {
 
 		void color_change_with_time(double current_time);
 
-		/* 顶点着色器：HelloWorldPoint.vert，片段着色器：HelloWorldPoint.frag */
+		/* 顶点着色器：HelloWorldPointVS.glsl，片段着色器：HelloWorldPointFS.glsl */
 		void draw_a_point();
 
-		/* 顶点着色器：HelloWorldTriangle.vert，片段着色器：HelloWorldTriangle.frag */
+		/* 顶点着色器：HelloWorldTriangleVS.glsl，片段着色器：HelloWorldTriangleFS.glsl */
 		void draw_a_triangle(double current_time);
 
 	};

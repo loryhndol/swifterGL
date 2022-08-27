@@ -1,4 +1,4 @@
-#include "HelloWorld.h" // 添加想要运行的程序类
+#include "HelloWorld.h" /* 添加想要运行的程序类 */ 
 
 int main(int argc, char* argv[]) {
 	if (argc != 3) {
