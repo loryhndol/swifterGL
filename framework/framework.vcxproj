@@ -142,10 +142,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="VAOGuard.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\utils\glad.c" />
     <ClCompile Include="framework.cpp" />
+    <ClCompile Include="VAOGuard.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

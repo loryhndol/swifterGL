@@ -1,5 +1,3 @@
-#include<memory>
-
 #include "HelloWorld.h" // 添加想要运行的程序类
 
 int main(int argc, char* argv[]) {
@@ -8,7 +6,8 @@ int main(int argc, char* argv[]) {
 		exit(1);
 	}
 
-	std::unique_ptr<HelloWorld> app(new HelloWorld);
-	app->run(argv[1], argv[2]);
+	//swifterGL::HelloWorld app{ "Hello, OpenGL" };
+	swifterGL::HelloWorld app{};
+	app.run(argv[1], argv[2]);
 	return 0;
 }
