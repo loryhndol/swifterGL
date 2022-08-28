@@ -112,6 +112,7 @@ namespace swifterGL {
 		glDeleteShader(vertex_shader);
 		glDeleteShader(tc_shader);
 		glDeleteShader(te_shader);
+		glDeleteShader(geo_shader);
 		glDeleteShader(fragment_shader);
 
 		return program;

@@ -3,6 +3,7 @@
 #include <cmath>
 
 namespace swifterGL {
+
 	class HelloWorld : public Application {
 	public:
 		HelloWorld();

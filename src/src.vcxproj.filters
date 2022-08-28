@@ -24,9 +24,15 @@
     <ClCompile Include="..\utils\glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Interpolation.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HelloWorld.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Interpolation.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -142,10 +142,12 @@
   <ItemGroup>
     <ClCompile Include="..\utils\glad.c" />
     <ClCompile Include="HelloWorld.cpp" />
+    <ClCompile Include="Interpolation.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="HelloWorld.h" />
+    <ClInclude Include="Interpolation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

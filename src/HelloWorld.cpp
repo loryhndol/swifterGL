@@ -54,8 +54,8 @@ namespace swifterGL {
 
 	void HelloWorld::render(double current_time) {
 		color_change_with_time(current_time);
-		//draw_a_point();
-		draw_a_triangle(current_time);
+		draw_a_point();
+		//draw_a_triangle(current_time);
 
 	}
 

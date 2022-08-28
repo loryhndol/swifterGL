@@ -1,8 +1,9 @@
-#include "HelloWorld.h" // Your project
+//#include "HelloWorld.h" // Your project
+#include "Interpolation.h"
 
 int main(int argc, char* argv[]) {
 	if (argc < 3) {
-		fprintf(stderr, "Usage: %s [FragS] [VertS] [option: TCS] [option: TES] [option:GS]\n", argv[0]);
+		fprintf(stderr, "Usage: %s [FragS] [VertS] [option: TCS] [option: TES] [option:GS] [option:CompS]\n", argv[0]);
 		exit(1);
 	}
 
@@ -11,7 +12,10 @@ int main(int argc, char* argv[]) {
 		shader_path.push_back(argv[i]);
 	}
 
-	swifterGL::HelloWorld app{ "Hello, World" };
+
+	//swifterGL::HelloWorld app{ "Hello, World" };
+	//app.run(shader_path);
+	swifterGL::Interpolation app{ "Quadratic Bezier" };
 	app.run(shader_path);
 	return 0;
 }
