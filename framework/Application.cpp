@@ -2,12 +2,9 @@
 
 namespace swifterGL {
 	Application::Application()
-		:title(kDefaultTitle),
-		window_width(kWindowWidth),
-		window_height(kWindowHeight),
-		major_version(4),
-		minor_version(5),
-		window(nullptr)
+		:title(swifterGL::kDefaultTitle),
+		window_width(swifterGL::kWindowWidth),
+		window_height(swifterGL::kWindowHeight)
 	{}
 
 	void Application::run(std::vector<std::string>& shader_path) {
@@ -18,12 +15,12 @@ namespace swifterGL {
 			exit(1);
 		}
 
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major_version);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor_version);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, swifterGL::kMajorVersion);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, swifterGL::kMinorVersion);
 
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-		window = glfwCreateWindow(window_width, window_height, title.c_str(), NULL, NULL);
+		GLFWwindow* window = glfwCreateWindow(window_width, window_height, title.c_str(), NULL, NULL);
 		if (!window) {
 			fprintf(stderr, "Failed to create GLFW window\n");
 			glfwTerminate();
@@ -38,7 +35,11 @@ namespace swifterGL {
 			exit(1);
 		}
 
-		set_callbacks();
+		glfwSetWindowSizeCallback(window, onResize);
+		glfwSetKeyCallback(window, onKey);
+		glfwSetMouseButtonCallback(window, onMouseButton);
+		glfwSetCursorPosCallback(window, onMouseMove);
+		glfwSetScrollCallback(window, onMouseWheel);
 
 #ifdef _DEBUG
 		fprintf(stderr, "VENDOR: %s\n", (char*)glGetString(GL_VENDOR));

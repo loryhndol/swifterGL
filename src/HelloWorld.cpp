@@ -1,6 +1,14 @@
 #include "HelloWorld.h"
 
 namespace swifterGL {
+	void onResize(GLFWwindow* window, int w, int h){
+		glViewport(0, 0, w, h);
+	}
+	void onKey(GLFWwindow* window, int key, int scancode, int action, int modes){}
+	void onMouseButton(GLFWwindow* window, int button, int action, int modes){}
+	void onMouseMove(GLFWwindow* window, double x, double y){}
+	void onMouseWheel(GLFWwindow* window, double x_offset, double y_offset){}
+
 	HelloWorld::HelloWorld() {}
 
 	HelloWorld::HelloWorld(std::string _title){
@@ -50,21 +58,5 @@ namespace swifterGL {
 		draw_a_triangle(current_time);
 
 	}
-
-	void HelloWorld::set_callbacks() {
-		glfwSetWindowSizeCallback(get_window(), on_resize);
-		glfwSetKeyCallback(get_window(), on_key);
-		glfwSetMouseButtonCallback(get_window(), on_mouse_button);
-		glfwSetCursorPosCallback(get_window(), on_mouse_move);
-		glfwSetScrollCallback(get_window(), on_mouse_wheel);
-	}
-
-	void HelloWorld::on_resize(GLFWwindow* window, int w, int h) {
-		glViewport(0, 0, w, h);
-	}
-	void HelloWorld::on_key(GLFWwindow* window, int key, int scancode, int action, int modes) {}
-	void HelloWorld::on_mouse_button(GLFWwindow* window, int button, int action, int modes) {}
-	void HelloWorld::on_mouse_move(GLFWwindow* window, double x, double y) {}
-	void HelloWorld::on_mouse_wheel(GLFWwindow* window, double x_offset, double y_offset) {}
 
 }
