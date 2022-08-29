@@ -1,4 +1,10 @@
 /framework/x64
+/framework/.vs
 /src/HelloWorld/x64
+/src/HelloWorld/.vs
 /src/Interpolation/x64
+/src/Interpolation/.vs
 /src/RotatingCubes/x64
+/src/RotatingCubes/.vs
+/src/.vs
+
