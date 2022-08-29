@@ -1,13 +1,14 @@
 #include "HelloWorld.h"
 
 namespace swifterGL {
-	void onResize(GLFWwindow* window, int w, int h) {
+	void Application::register_on_resize(int w, int h) {
 		glViewport(0, 0, w, h);
 	}
-	void onKey(GLFWwindow* window, int key, int scancode, int action, int modes) {}
-	void onMouseButton(GLFWwindow* window, int button, int action, int modes) {}
-	void onMouseMove(GLFWwindow* window, double x, double y) {}
-	void onMouseWheel(GLFWwindow* window, double x_offset, double y_offset) {}
+
+	void Application::register_on_key(int key, int scancode, int action, int modes) {}
+	void Application::register_on_mouse_button(int button, int action, int modes){}
+	void Application::register_on_mouse_move(double x, double y){}
+	void Application::register_on_mouse_wheel(double x_offset, double y_offset){}
 
 	HelloWorld::HelloWorld(std::string _title){
 		if(_title != Application::title) 

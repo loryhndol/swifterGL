@@ -7,6 +7,22 @@ namespace swifterGL {
 		window_height(swifterGL::kWindowHeight)
 	{}
 
+	void Application::observe_on_resize(GLFWwindow* window, int w, int h) {
+		register_on_resize(w, h);
+	}
+	void Application::observe_on_key(GLFWwindow* window, int key, int scancode, int action, int modes) {
+		register_on_key(key, scancode, action, modes);
+	}
+	void Application::observe_on_mouse_button(GLFWwindow* window, int button, int action, int modes) {
+		register_on_mouse_button(button, action, modes);
+	}
+	void Application::observe_on_mouse_move(GLFWwindow* window, double x, double y) {
+		register_on_mouse_move(x, y);
+	}
+	void Application::observe_on_mouse_wheel(GLFWwindow* window, double x_offset, double y_offset) {
+		register_on_mouse_wheel(x_offset, y_offset);
+	}
+
 	void Application::run(std::vector<std::string>& shader_path) {
 		bool running = true;
 
@@ -35,11 +51,11 @@ namespace swifterGL {
 			exit(1);
 		}
 
-		glfwSetWindowSizeCallback(window, onResize);
-		glfwSetKeyCallback(window, onKey);
-		glfwSetMouseButtonCallback(window, onMouseButton);
-		glfwSetCursorPosCallback(window, onMouseMove);
-		glfwSetScrollCallback(window, onMouseWheel);
+		glfwSetWindowSizeCallback(window, observe_on_resize);
+		glfwSetKeyCallback(window, observe_on_key);
+		glfwSetMouseButtonCallback(window, observe_on_mouse_button);
+		glfwSetCursorPosCallback(window, observe_on_mouse_move);
+		glfwSetScrollCallback(window, observe_on_mouse_wheel);
 
 #ifdef _DEBUG
 		fprintf(stderr, "VENDOR: %s\n", (char*)glGetString(GL_VENDOR));
