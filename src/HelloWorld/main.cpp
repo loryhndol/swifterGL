@@ -1,5 +1,4 @@
-//#include "HelloWorld.h" // Your project
-#include "Interpolation.h"
+#include "HelloWorld.h" 
 
 int main(int argc, char* argv[]) {
 	if (argc < 3) {
@@ -13,9 +12,7 @@ int main(int argc, char* argv[]) {
 	}
 
 
-	//swifterGL::HelloWorld app{ "Hello, World" };
-	//app.run(shader_path);
-	swifterGL::Interpolation app{ "Quadratic Bezier" };
+	swifterGL::HelloWorld app{ "Hello, World" };
 	app.run(shader_path);
 	return 0;
 }

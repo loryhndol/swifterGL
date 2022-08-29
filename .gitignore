@@ -1,4 +1,7 @@
-/src/x64
 /src/.vs
 /framework/x64
 /framework/.vs
+/src/HelloWorld/.vs
+/src/HelloWorld/x64
+/src/Interpolation/.vs
+/src/Interpolation/x64

@@ -1,15 +1,13 @@
 #include "HelloWorld.h"
 
 namespace swifterGL {
-	void onResize(GLFWwindow* window, int w, int h){
+	void onResize(GLFWwindow* window, int w, int h) {
 		glViewport(0, 0, w, h);
 	}
-	void onKey(GLFWwindow* window, int key, int scancode, int action, int modes){}
-	void onMouseButton(GLFWwindow* window, int button, int action, int modes){}
-	void onMouseMove(GLFWwindow* window, double x, double y){}
-	void onMouseWheel(GLFWwindow* window, double x_offset, double y_offset){}
-
-	HelloWorld::HelloWorld() {}
+	void onKey(GLFWwindow* window, int key, int scancode, int action, int modes) {}
+	void onMouseButton(GLFWwindow* window, int button, int action, int modes) {}
+	void onMouseMove(GLFWwindow* window, double x, double y) {}
+	void onMouseWheel(GLFWwindow* window, double x_offset, double y_offset) {}
 
 	HelloWorld::HelloWorld(std::string _title){
 		if(_title != Application::title) 
@@ -54,8 +52,8 @@ namespace swifterGL {
 
 	void HelloWorld::render(double current_time) {
 		color_change_with_time(current_time);
-		draw_a_point();
-		//draw_a_triangle(current_time);
+		//draw_a_point();
+		draw_a_triangle(current_time);
 
 	}
 

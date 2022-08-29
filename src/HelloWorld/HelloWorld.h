@@ -1,13 +1,11 @@
 #pragma once
-#include "../framework/Application.h"
+#include "../../framework/Application.h"
 #include <cmath>
 
 namespace swifterGL {
-
 	class HelloWorld : public Application {
 	public:
-		HelloWorld();
-		explicit HelloWorld(std::string _title);
+		explicit HelloWorld(std::string new_title);
 		~HelloWorld();
 
 		void render(double current_time) override;
@@ -18,7 +16,5 @@ namespace swifterGL {
 
 		void draw_a_point();
 		void draw_a_triangle(double current_time);
-
 	};
 }
-

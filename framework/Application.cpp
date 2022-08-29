@@ -1,8 +1,8 @@
 #include "Application.h"
 
 namespace swifterGL {
-	Application::Application()
-		:title(swifterGL::kDefaultTitle),
+	Application::Application(std::string new_title)
+		:title(new_title),
 		window_width(swifterGL::kWindowWidth),
 		window_height(swifterGL::kWindowHeight)
 	{}
@@ -69,5 +69,5 @@ namespace swifterGL {
 
 		glfwDestroyWindow(window);
 		glfwTerminate();
-	};
+	}
 }

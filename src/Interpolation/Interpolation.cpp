@@ -2,6 +2,14 @@
 
 namespace swifterGL {
 
+	void onResize(GLFWwindow* window, int w, int h) {
+		glViewport(0, 0, w, h);
+	}
+	void onKey(GLFWwindow* window, int key, int scancode, int action, int modes) {}
+	void onMouseButton(GLFWwindow* window, int button, int action, int modes) {}
+	void onMouseMove(GLFWwindow* window, double x, double y) {}
+	void onMouseWheel(GLFWwindow* window, double x_offset, double y_offset) {}
+
 	Interpolation::Interpolation(std::string new_title) {
 		if (new_title != Application::title)
 			Application::title = new_title;

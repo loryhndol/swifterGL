@@ -9,17 +9,10 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include <memory>
 
 #include "VAOGuard.h"
 
-
 namespace swifterGL {
-	constexpr int kWindowWidth = 640;
-	constexpr int kWindowHeight = 480;
-	constexpr int kMajorVersion = 4;
-	constexpr int kMinorVersion = 5;
-	const std::string kDefaultTitle = "OpenGL Application";
 
 	void onResize(GLFWwindow* window, int w, int h);
 	void onKey(GLFWwindow* window, int key, int scancode, int action, int modes);
@@ -27,9 +20,15 @@ namespace swifterGL {
 	void onMouseMove(GLFWwindow* window, double x, double y);
 	void onMouseWheel(GLFWwindow* window, double x_offset, double y_offset);
 
+	constexpr int kWindowWidth = 640;
+	constexpr int kWindowHeight = 480;
+	constexpr int kMajorVersion = 4;
+	constexpr int kMinorVersion = 5;
+	const std::string kDefaultTitle = "OpenGL Application";
+
 	class Application {
 	public:
-		Application();
+		explicit Application(std::string new_title="OpenGL Application");
 		virtual ~Application() {}
 
 		virtual void render(double current_time) = 0;
