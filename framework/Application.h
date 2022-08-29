@@ -9,8 +9,9 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <unordered_map>
 
-#include "VAOGuard.h"
+#include "Shader.h"
 
 namespace swifterGL {
 
@@ -19,29 +20,29 @@ namespace swifterGL {
 	constexpr int kMajorVersion = 4;
 	constexpr int kMinorVersion = 5;
 
+	void onResize(GLFWwindow* window, int w, int h);
+	void onKey(GLFWwindow* window, int key, int scancode, int action, int modes);
+	void onMouseButton(GLFWwindow* window, int button, int action, int modes);
+	void onMouseMove(GLFWwindow* window, double x, double y);
+	void onMouseWheel(GLFWwindow* window, double x_offset, double y_offset);
+
 	class Application {
 	public:
 		explicit Application(std::string new_title="OpenGL Application");
 		virtual ~Application() {}
 
 		virtual void render(double current_time) = 0;
-		void run(std::vector<std::string>& shader_path);
+		void run(std::unordered_map<ShaderType, std::string>& shader_path);
 
-	protected:
-		static void register_on_resize(int w, int h);
-		static void register_on_key(int key, int scancode, int action, int modes);
-		static void register_on_mouse_button(int button, int action, int modes);
-		static void register_on_mouse_move(double x, double y);
-		static void register_on_mouse_wheel(double x_offset, double y_offset);
-		std::string title;
+		int get_window_width();
+		int get_window_height();
+		void set_title(std::string new_title);
+		const Shader& get_shader(ShaderType t);
 
 	private:
+		std::vector<Shader> shaders;
+		std::string title;
 		int window_width;
 		int window_height;
-		static void observe_on_resize(GLFWwindow* window, int w, int h);
-		static void observe_on_key(GLFWwindow* window, int key, int scancode, int action, int modes);
-		static void observe_on_mouse_button(GLFWwindow* window, int button, int action, int modes);
-		static void observe_on_mouse_move(GLFWwindow* window, double x, double y);
-		static void observe_on_mouse_wheel(GLFWwindow* window, double x_offset, double y_offset);
 	};
 }

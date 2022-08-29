@@ -71,8 +71,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>D:\swifterGL\framework;D:\swifterGL\utils\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>D:\swifterGL\framework\x64\Debug;D:\swifterGL\utils\Libs;$(LibraryPath)</LibraryPath>
+    <IncludePath>..\..\utils\Include;$(IncludePath)</IncludePath>
+    <LibraryPath>..\..\framework\x64\Debug;..\..\utils\Libs;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -113,7 +113,7 @@
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>glfw3.lib;framework.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\swifterGL\utils\Libs\GLFW;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\framework\x64\Debug;..\..\utils\Libs\GLFW;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

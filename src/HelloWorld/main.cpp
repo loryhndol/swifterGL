@@ -1,15 +1,18 @@
 #include "HelloWorld.h" 
 
 int main(int argc, char* argv[]) {
-	if (argc < 3) {
-		fprintf(stderr, "Usage: %s [FragS] [VertS] [option: TCS] [option: TES] [option:GS] [option:CompS]\n", argv[0]);
+	if (argc != 6) {
+		fprintf(stderr, "Usage: %s [FragS] [VertS] [TCS] [TES] [GS]\n", argv[0]);
 		exit(1);
 	}
 
-	std::vector<std::string> shader_path{ argv[1], argv[2] };
-	for (int i = 3; i < argc; i++) {
-		shader_path.push_back(argv[i]);
-	}
+	std::unordered_map<swifterGL::ShaderType, std::string> shader_path{
+		{swifterGL::ShaderType::FS, argv[1]},
+		{swifterGL::ShaderType::VS, argv[2]},
+		{swifterGL::ShaderType::TCS, argv[3]},
+		{swifterGL::ShaderType::TES, argv[4]},
+		{swifterGL::ShaderType::GS, argv[5]}
+	};
 
 
 	swifterGL::HelloWorld app{ "Hello, World" };

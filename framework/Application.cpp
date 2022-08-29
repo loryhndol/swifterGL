@@ -7,23 +7,20 @@ namespace swifterGL {
 		window_height(swifterGL::kWindowHeight)
 	{}
 
-	void Application::observe_on_resize(GLFWwindow* window, int w, int h) {
-		register_on_resize(w, h);
-	}
-	void Application::observe_on_key(GLFWwindow* window, int key, int scancode, int action, int modes) {
-		register_on_key(key, scancode, action, modes);
-	}
-	void Application::observe_on_mouse_button(GLFWwindow* window, int button, int action, int modes) {
-		register_on_mouse_button(button, action, modes);
-	}
-	void Application::observe_on_mouse_move(GLFWwindow* window, double x, double y) {
-		register_on_mouse_move(x, y);
-	}
-	void Application::observe_on_mouse_wheel(GLFWwindow* window, double x_offset, double y_offset) {
-		register_on_mouse_wheel(x_offset, y_offset);
+	int Application::get_window_width() { return window_width; }
+	int Application::get_window_height() { return window_height; }
+	void Application::set_title(std::string new_title) { title = new_title; }
+
+	const Shader& Application::get_shader(ShaderType t) {
+		for (auto& i : shaders) {
+			if (i.get_shader_type() == t) {
+				return i;
+			}
+		}
+		return Shader(ShaderType::NIL, "");
 	}
 
-	void Application::run(std::vector<std::string>& shader_path) {
+	void Application::run(std::unordered_map<ShaderType,std::string>& shader_path) {
 		bool running = true;
 
 		if (!glfwInit()) {
@@ -51,11 +48,11 @@ namespace swifterGL {
 			exit(1);
 		}
 
-		glfwSetWindowSizeCallback(window, observe_on_resize);
-		glfwSetKeyCallback(window, observe_on_key);
-		glfwSetMouseButtonCallback(window, observe_on_mouse_button);
-		glfwSetCursorPosCallback(window, observe_on_mouse_move);
-		glfwSetScrollCallback(window, observe_on_mouse_wheel);
+		glfwSetWindowSizeCallback(window, onResize);
+		glfwSetKeyCallback(window, onKey);
+		glfwSetMouseButtonCallback(window, onMouseButton);
+		glfwSetCursorPosCallback(window, onMouseMove);
+		glfwSetScrollCallback(window, onMouseWheel);
 
 #ifdef _DEBUG
 		fprintf(stderr, "VENDOR: %s\n", (char*)glGetString(GL_VENDOR));
@@ -63,7 +60,28 @@ namespace swifterGL {
 		fprintf(stderr, "RENDERER: %s\n", (char*)glGetString(GL_RENDERER));
 #endif 
 
-		VAOGuard vao_guard(shader_path);
+
+		for (auto & i : shader_path) {
+			shaders.emplace_back( i.first, i.second );
+		}
+
+
+		for (auto &shader : shaders) {
+			shader.compile(swifterGL::read_shader_code(shader.get_pathname()));
+		}
+
+		GLuint program = glCreateProgram();
+		
+		for (auto & shader : shaders) {
+			glAttachShader(program, shader.get_shader_id());
+		}
+		
+		glLinkProgram(program);
+
+		GLuint VAO;
+		glCreateVertexArrays(1, &VAO);
+		glBindVertexArray(VAO);
+		glUseProgram(program);
 
 		while (running) {
 
@@ -82,6 +100,10 @@ namespace swifterGL {
 			}
 
 		}
+
+		glDeleteVertexArrays(1, &VAO);
+		glDeleteProgram(program);
+		glDeleteVertexArrays(1, &VAO);
 
 		glfwDestroyWindow(window);
 		glfwTerminate();

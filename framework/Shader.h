@@ -10,18 +10,25 @@
 #include <vector>
 
 namespace swifterGL {
+	enum class ShaderType { VS, TCS, TES, GS, FS, CS, NIL};
+	std::string read_shader_code(std::string path);
+
 	class Shader {
 	public:
-		explicit Shader(const std::vector<std::string>& shader_path);
-		GLuint compile_shaders();
-		std::string read_shader_source(const std::string& path);
-	private:
-		std::string fs_pathname;
-		std::string vs_pathname;
-		std::string tcs_pathname;
-		std::string tes_pathname;
-		std::string gs_pathname;
-	};
+		Shader(ShaderType t, std::string new_code_path);
+		~Shader();
 
+		const std::string& get_pathname();
+		GLuint get_shader_id();
+		ShaderType get_shader_type();
+
+		void compile(std::string code_content);
+
+	private:
+		ShaderType my_type;
+		std::string code_path;
+		std::string code_content;
+		GLuint ID;
+	};
 }
 

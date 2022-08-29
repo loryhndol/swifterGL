@@ -7,9 +7,6 @@
     <ClCompile Include="..\utils\glad.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="VAOGuard.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -24,9 +21,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="VAOGuard.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
