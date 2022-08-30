@@ -4,20 +4,20 @@ namespace swifterGL {
 	Application::Application(std::string new_title)
 		:title(new_title),
 		window_width(swifterGL::kWindowWidth),
-		window_height(swifterGL::kWindowHeight)
+		window_height(swifterGL::kWindowHeight),
+		buffer{}
 	{}
 
 	int Application::get_window_width() { return window_width; }
 	int Application::get_window_height() { return window_height; }
 	void Application::set_title(std::string new_title) { title = new_title; }
 
-	const Shader& Application::get_shader(ShaderType t) {
+	Shader& Application::get_shader(ShaderType t) {
 		for (auto& i : shaders) {
 			if (i.get_shader_type() == t) {
 				return i;
 			}
 		}
-		return Shader(ShaderType::NIL, "");
 	}
 
 	void Application::run(std::unordered_map<ShaderType,std::string>& shader_path) {
@@ -70,21 +70,24 @@ namespace swifterGL {
 			shader.compile(swifterGL::read_shader_code(shader.get_pathname()));
 		}
 
-		GLuint program = glCreateProgram();
+		GLuint rendering_program = glCreateProgram();
 		
 		for (auto & shader : shaders) {
-			glAttachShader(program, shader.get_shader_id());
+			glAttachShader(rendering_program, shader.get_shader_id());
 		}
 		
-		glLinkProgram(program);
+		glLinkProgram(rendering_program);
 
 		GLuint VAO;
 		glCreateVertexArrays(1, &VAO);
 		glBindVertexArray(VAO);
-		glUseProgram(program);
+
+		gen_buffers();
+		
 
 		while (running) {
 
+			glUseProgram(rendering_program);
 
 			render(glfwGetTime());
 
@@ -102,7 +105,7 @@ namespace swifterGL {
 		}
 
 		glDeleteVertexArrays(1, &VAO);
-		glDeleteProgram(program);
+		glDeleteProgram(rendering_program);
 		glDeleteVertexArrays(1, &VAO);
 
 		glfwDestroyWindow(window);

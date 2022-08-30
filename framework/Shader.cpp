@@ -29,7 +29,7 @@ namespace swifterGL {
 
 	const std::string& Shader::get_pathname() { return code_path; }
 
-	GLuint Shader::get_shader_id() { return ID; }
+	GLuint& Shader::get_shader_id() { return ID; }
 
 	void Shader::compile(std::string code_content) {
 		switch (my_type)

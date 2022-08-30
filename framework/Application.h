@@ -37,12 +37,15 @@ namespace swifterGL {
 		int get_window_width();
 		int get_window_height();
 		void set_title(std::string new_title);
-		const Shader& get_shader(ShaderType t);
+		Shader& get_shader(ShaderType t);
+		GLuint& get_buffer() { return buffer; }
+		virtual void gen_buffers(){}
 
 	private:
 		std::vector<Shader> shaders;
 		std::string title;
 		int window_width;
 		int window_height;
+		GLuint buffer;
 	};
 }

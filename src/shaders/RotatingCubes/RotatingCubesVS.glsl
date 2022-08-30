@@ -6,8 +6,8 @@ out VS_OUT{
   vec4 color;
 } vs_out;
 
-uniform mat4 mv_matrix;
-uniform mat4 proj_matrix;
+layout (location = 0)uniform mat4 mv_matrix;
+layout (location = 1)uniform mat4 proj_matrix;
 
 void main(){
   gl_Position = proj_matrix * mv_matrix * position;

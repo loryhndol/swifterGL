@@ -19,7 +19,7 @@ namespace swifterGL {
 		~Shader();
 
 		const std::string& get_pathname();
-		GLuint get_shader_id();
+		GLuint& get_shader_id();
 		ShaderType get_shader_type();
 
 		void compile(std::string code_content);
